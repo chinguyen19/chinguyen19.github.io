@@ -1,0 +1,25 @@
+# _config.yml
+title: "Chi Nguyen's Portfolio"
+description: "A portfolio showcasing my projects and work"
+author: "Chi Nguyen"
+baseurl: "" # leave blank for root
+url: "https://chinguyen19.github.io" # your GitHub Pages URL
+
+# Theme settings
+theme: minima # using Jekyll's built-in Minima theme
+
+# Site settings
+permalink: /:title/ # pretty URLs for pages
+markdown: kramdown # markdown converter
+
+# Social links (optional)
+social_links:
+  - name: GitHub
+    url: "https://github.com/chinguyen19"
+  - name: LinkedIn
+    url: "https://linkedin.com/in/chinguyen19"
+
+# Plugins (optional, for additional functionality)
+plugins:
+  - jekyll-feed # for RSS feed
+  - jekyll-seo-tag # for SEO optimization
