@@ -1,0 +1,17 @@
+- title: "Prostate Cancer Transcriptome Analysis"
+  description: " Transcriptome differences analysis between untreated prostate cancer (PC) and locally recurrent castration-resistant prostate cancer (CRPC) samples"
+  date: "Jan 20, 2023"
+  image: "assets/project1.jpg"
+  link: "https://github.com/chinguyen19/Bioinformatics-projects/tree/09e1120d1f4de106911994083abc90f09ba1d7ae/Biological%20data%20analysis"
+
+- title: "Computational Drug Discovery for Acetylcholinesterase Inhibitors"
+  description: "Indentifying potential AChE inhibitors through computational models to better support patients with Alzheimer’s and similar diseases"
+  date: "Dec 10, 2019"
+  image: "assets/project2.jpg"
+  link: "https://github.com/chinguyen19/Bioinformatics-projects/tree/09e1120d1f4de106911994083abc90f09ba1d7ae/Computational_drug_dicovery"
+
+- title: "Diabetes Risk Calculation App"
+  description: "A software tool connected to a real-time database using FHIR (Fast Healthcare Interoperability Resources) server to make timely, accurate, and informed decisions regarding diabetes risk"
+  date: "Dec 2, 2019"
+  image: "assets/project3.jpg"
+  link: "https://github.com/chinguyen19/Diabetes-Risk-Calculator"
