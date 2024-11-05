@@ -115,23 +115,18 @@
     <!-- Add the new Contact Section at the bottom of the page -->
 
     <!-- Contact Section -->
-<section id="contact" class="contact-section">
-    <h2>Contact Me</h2>
-    <p>If you have any questions or would like to collaborate, please feel free to reach out!</p>
-
-    <form method="POST"> <!-- Replace with your Formspree ID -->
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-
-        <button type="submit">Send Message</button>
-    </form>
-</section>
+<form action="https://formspree.io/f/xrbgqged" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+    
+    <label for="message">Message:</label>
+    <textarea name="message" id="message" required></textarea>
+    
+    <button type="submit">Send Message</button>
+</form>
 
 <!-- Footer -->
 <footer>
