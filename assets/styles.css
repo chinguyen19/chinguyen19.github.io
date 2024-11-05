@@ -37,11 +37,14 @@ nav ul li a {
     font-weight: bold;
 }
 
-.resume-btn {
+/* Button Styles for Resume and Publications */
+.resume-btn, .publications-btn {
     background-color: #007bff;
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 /* Portfolio Section Styling */
