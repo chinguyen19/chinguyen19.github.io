@@ -17,7 +17,7 @@
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#interests">Interests</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#resume" class="resume-btn">Resume</a></li>
+            <a href="assets/resume.pdf" target="_blank" class="resume-btn">Resume</a>
         </ul>
     </nav>
 </header>
@@ -110,11 +110,39 @@
     </div>
 </section>
 
+    <!-- Existing Sections... -->
+    <!-- Add the new Contact Section at the bottom of the page -->
+
+    <!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <h2>Contact Me</h2>
+    <p>If you have any questions or would like to collaborate, please feel free to reach out!</p>
+
+    <form method="POST"> <!-- Replace with your Formspree ID -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
 <!-- Footer -->
 <footer>
     <p>&copy; 2024 Chi Nguyen. All rights reserved.</p>
 </footer>
 
 <script src="assets/script.js"></script>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevents form from refreshing the page
+        alert("Thank you! Your message has been received.");
+    });
+</script>
 </body>
 </html>
