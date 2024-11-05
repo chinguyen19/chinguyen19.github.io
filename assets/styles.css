@@ -27,26 +27,38 @@ header h1 {
 nav ul {
     display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
+
 nav ul li {
     margin-left: 20px;
 }
+
 nav ul li a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
 }
 
+/* Container for buttons to prevent overlap and align properly */
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
 /* Button Styles for Resume and Publications */
 .resume-btn, .publications-btn {
     background-color: #007bff;
     color: white;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 5px;
     font-weight: bold;
     text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap; /* Prevents text wrapping */
 }
-
 /* Portfolio Section Styling */
 #portfolio {
     padding: 40px;
