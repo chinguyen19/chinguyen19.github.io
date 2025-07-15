@@ -60,12 +60,32 @@
             text-decoration: none;
         }
 
+        .project video {
+            margin-top: 1rem;
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            outline: 2px solid #0af;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
         footer {
             text-align: center;
             padding: 1rem;
             background-color: #1a1a1a;
             color: #888;
             margin-top: 2rem;
+        }
+
+        @media screen and (max-width: 600px) {
+            section {
+                padding: 1rem;
+            }
+
+            .project video {
+                max-height: 250px;
+            }
         }
     </style>
 </head>
