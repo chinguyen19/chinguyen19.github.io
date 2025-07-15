@@ -1,136 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Portfolio | Data Scientist</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #F0FFF4;
-            color: #2E4F4F;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
         }
+
         header {
-            background-color: #17806C;
-            color: white;
-            padding: 1rem;
+            background-color: #1a1a1a;
+            padding: 1rem 2rem;
             text-align: center;
+            border-bottom: 2px solid #0af;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
+
+        header h1 {
+            color: #0af;
+            margin: 0;
         }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
+
+        nav {
+            text-align: center;
+            margin: 1rem 0;
         }
-        nav ul li a {
-            color: white;
+
+        nav a {
+            color: #0af;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 2rem;
+        }
+
+        h2 {
+            color: #0af;
+            border-bottom: 1px solid #0af;
+            padding-bottom: 0.5rem;
+        }
+
+        .project {
+            background-color: #1c1c1c;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #0af;
+            border-radius: 5px;
+        }
+
+        .project a {
+            color: #0af;
             text-decoration: none;
         }
-        section {
-            padding: 20px;
-            margin: 10px auto;
-            max-width: 900px;
-            background: #DFF6E5;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .project-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .project {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .project:hover {
-            transform: scale(1.5);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        .project img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+
         footer {
             text-align: center;
-            padding: 10px;
-            background: #17806C;
-            color: white;
-            margin-top: 20px;
+            padding: 1rem;
+            background-color: #1a1a1a;
+            color: #888;
+            margin-top: 2rem;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>Chi Nguyen's Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Chi Nguyen</h1>
+        <p>Data Scientist | Data Analyst</p>
     </header>
-    
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-list">
-            <div class="project">
-                <img src="animated flu shot needle.jpg" alt="Flu Shots Dashboard">
-                <h3>Flu Shots taken in 2022 – Data Healthcare System</h3>
-                <p>Analyzed hospital flu vaccination data using SQL to identify trends, demographic patterns, and key factors influencing vaccine uptake.</p>
-                <a href="https://github.com/chinguyen19/Healthcare-System-Data-project/blob/f5ffb251423f0c2967001eef88ae9aeb900d42cf/Dashboard_Flu_Shot_2022.png">View on GitHub</a>
-            </div>
-            <div class="project">
-                <img src="https://github.com/chinguyen19/Fibromyalgia-vs-ChronicPain_genomic-signature" alt="Fibromyalgia Research">
-                <h3>Optimizing Fibromyalgia through Multimodal Assessment and Targeted Intervention</h3>
-                <p>Developed predictive models to enhance early diagnosis and treatment optimization for fibromyalgia patients.</p>
-                <a href="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/tree/dd3c72db7599f57c629ef6eabc97bec06de1a7b6/Fibromyalgia-vs-ChronicPain_genomic-signature#genomic-signature-in-fibromyalgia">View on GitHub</a>
-            </div>
-            <div class="project">
-                <img src="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/Computational_drug_dicovery" alt="Drug Discovery ML">
-                <h3>Predicting Acetylcholinesterase Inhibitors for Alzheimer’s disease</h3>
-                <p>Built and optimized ML models using QSAR modeling and ChEMBL bioactivity data to predict AChE inhibitor potency.</p>
-                <a href="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/tree/main/Computational_drug_dicovery#predicting-acetylcholinesterase-inhibitors-for-alzheimers-disease-using-machine-learning-drug-discovery-application">View on GitHub</a>
-            </div>
-            <div class="project">
-                <img src="https://github.com/chinguyen19/Diabetes-Risk-Calculator" alt="Diabetes Risk Calculator">
-                <h3>Diabetes Risk Assessment using FHIR database</h3>
-                <p>Developed a diabetes-risk calculator utilizing the FHIR database to facilitate early detection and proactive management of diabetes.</p>
-                <a href="https://github.com/chinguyen19/Diabetes-Risk-Calculator#diabetes-risk-calculation-app">View on GitHub</a>
-            </div>
-            <div class="project">
-                <img src="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/PC_analysis" alt="Prostate Cancer Analysis">
-                <h3>Prostate Cancer transcriptomic analysis</h3>
-                <p>Conducted transcriptome analysis to uncover molecular mechanisms underlying prostate cancer progression and treatment resistance.</p>
-                <a href="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/tree/main/Biological%20data%20analysis#prostate-cancer-transcriptome-analysis">View on GitHub</a>
-            </div>
+
+    <nav>
+        <a href="#ds-projects">Data Science Projects</a>
+        <a href="#dashboards">Dashboard Projects</a>
+    </nav>
+
+    <section id="ds-projects">
+        <h2>Data Science Projects</h2>
+
+        <div class="project">
+            <h3>Predicting Fibromyalgia severity ultilizing SCI=XAI framework and new features: fatigue & sleep quality</h3>
+            <p>Short description of what the project does, techniques used, and any key insights.</p>
+            <a href="https://github.com/yourusername/project1" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project">
+            <h3>Predicting Acetylcholinesterase Inhibitors for Alzheimer’s disease using Machine Learning: Drug Discovery application</h3>
+            <p>This project leverages machine learning to identify potential AChE inhibitors, enabling faster and more efficient drug discovery. By analyzing bioactivity data and predicting potent compounds, this approach streamlines early-stage screening for Alzheimer’s treatments.</p>
+            <a href="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/tree/4ee1328112760d010b72d1c7d50236ad431b5a2e/Computational_drug_dicovery" target="_blank">View on GitHub</a>
         </div>
     </section>
-    
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hi, I'm Chi Nguyen, a passionate bioinformatics researcher and clinical data analyst. Here you'll find a collection of my recent projects and areas of interest in health data science, and bioinformatics.</p>
+
+    <section id="dashboards">
+        <h2>Dashboard Projects</h2>
+        
+        <div class="project">
+            <h3> Healthcase System (US) in 2020 dashboard (Tableau)</h3>
+            <p>Summarizes key metrics about immunization in the US healthcare system  in 2020</p>
+            <a href="https://github.com/yourusername/dashboard1" target="_blank">View on GitHub</a>
+        </div>
+        
+        <div class="project">
+            <h3>Human Resources dashboard (Power BI)</h3>
+            <p>Offers a comprehensive overview of key human resources metrics to help HR teams monitor real-time headcount..</p>
+            <a href="https://github.com/yourusername/dashboard1" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project">
+            <h3>KPI reporting dashboard (Power BI)</h3>
+            <p>A structured and scalable KPI framework for a new shelf-management solution was designed using PowerBI. This aims to inform stakeholder insight and support internal product engineer.</p>
+            <a href="https://github.com/yourusername/dashboard2" target="_blank">View on GitHub</a>
+        </div>
     </section>
-    
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: chihuulinh.nguyen@gmail.com</p>
-    </section>
-    
+
     <footer>
-        <p>&copy; 2025 Chi Nguyen</p>
+        &copy; 2025 Chi Nguyen | Portfolio
     </footer>
 </body>
+
 </html>
 
