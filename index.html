@@ -71,6 +71,25 @@
             object-fit: cover;
         }
 
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .slider-container img {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #0af;
+            border-radius: 5px;
+        }
+
+        .slider-container img.active {
+            display: block;
+        }        
+
         footer {
             text-align: center;
             padding: 1rem;
@@ -90,6 +109,14 @@
             }
         }
     </style>
+    <script>
+        function showGraph(projectId, index) {
+            const images = document.querySelectorAll(`#${projectId} .slider-container img`);
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -110,12 +137,22 @@
             <h3>Predicting Fibromyalgia severity ultilizing SCI-XAI framework and new features: fatigue & sleep quality</h3>
             <p>Exploring the relevance of Fatigue and Sleep quality in assessing Fibromyalgia severity using ML models. Investigating the predictive potential of clinical features in treatment optimization.</p>
             <a href="https://github.com/yourusername/project1" target="_blank">View on GitHub</a>
+            <div class="slider-container">
+                <img src="images/project1-graph1.png" alt="Graph 1" class="active">
+                <img src="images/project1-graph2.png" alt="Graph 2">
+                <input type="range" min="0" max="1" value="0" onchange="showGraph('ds-project-1', this.value)">
+            </div>
         </div>
 
         <div class="project">
             <h3>Predicting Acetylcholinesterase Inhibitors for Alzheimer’s disease using Machine Learning: Drug Discovery application</h3>
             <p>This project leverages machine learning to identify potential AChE inhibitors, enabling faster and more efficient drug discovery. By analyzing bioactivity data and predicting potent compounds, this approach streamlines early-stage screening for Alzheimer’s treatments.</p>
             <a href="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/tree/4ee1328112760d010b72d1c7d50236ad431b5a2e/Computational_drug_dicovery" target="_blank">View on GitHub</a>
+            <div class="slider-container">
+                <img src="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/blob/main/Computational_drug_dicovery/plot_ic50-1.png" alt="Graph 1" class="active">
+                <img src="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/blob/main/Computational_drug_dicovery/predicted-vs-true.png" alt="Graph 2">
+                <input type="range" min="0" max="1" value="0" onchange="showGraph('ds-project-2', this.value)">
+            </div>
         </div>
     </section>
 
