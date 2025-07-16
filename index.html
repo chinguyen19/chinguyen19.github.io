@@ -71,25 +71,6 @@
             object-fit: cover;
         }
 
-        .slider-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .slider-container img {
-            display: none;
-            max-width: 100%;
-            height: auto;
-            border: 2px solid #0af;
-            border-radius: 5px;
-        }
-
-        .slider-container img.active {
-            display: block;
-        }        
-
         footer {
             text-align: center;
             padding: 1rem;
@@ -137,22 +118,12 @@
             <h3>Predicting Fibromyalgia severity ultilizing SCI-XAI framework and new features: fatigue & sleep quality</h3>
             <p>Exploring the relevance of Fatigue and Sleep quality in assessing Fibromyalgia severity using ML models. Investigating the predictive potential of clinical features in treatment optimization.</p>
             <a href="https://github.com/yourusername/project1" target="_blank">View on GitHub</a>
-            <div class="slider-container">
-                <img src="images/project1-graph1.png" alt="Graph 1" class="active">
-                <img src="images/project1-graph2.png" alt="Graph 2">
-                <input type="range" min="0" max="1" value="0" onchange="showGraph('ds-project-1', this.value)">
-            </div>
         </div>
 
         <div class="project">
             <h3>Predicting Acetylcholinesterase Inhibitors for Alzheimer’s disease using Machine Learning: Drug Discovery application</h3>
             <p>This project leverages machine learning to identify potential AChE inhibitors, enabling faster and more efficient drug discovery. By analyzing bioactivity data and predicting potent compounds, this approach streamlines early-stage screening for Alzheimer’s treatments.</p>
             <a href="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/tree/4ee1328112760d010b72d1c7d50236ad431b5a2e/Computational_drug_dicovery" target="_blank">View on GitHub</a>
-            <div class="slider-container">
-                <img src="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/blob/main/Computational_drug_dicovery/plot_ic50-1.png" alt="Graph 1" class="active">
-                <img src="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/blob/main/Computational_drug_dicovery/predicted-vs-true.png" alt="Graph 2">
-                <input type="range" min="0" max="1" value="0" onchange="showGraph('ds-project-2', this.value)">
-            </div>
         </div>
     </section>
 
@@ -180,6 +151,10 @@
             <h3>KPI reporting dashboard (Power BI)</h3>
             <p>A structured and scalable KPI framework for a new shelf-management solution was designed using PowerBI. This aims to inform stakeholder insight and support internal product engineer.</p>
             <a href="https://github.com/yourusername/dashboard2" target="_blank">View on GitHub</a>
+            <video id="kpi-video" autoplay loop muted playsinline>
+                <source src="https://github.com/chinguyen19/chinguyen19.github.io/raw/refs/heads/main/NewProduct_KPI_reporting%20-%20Made%20with%20Clipchamp_1752607693691.mp4" type="video/mp4">
+                 Your browser does not support the video tag.   
+            </video> 
         </div>
     </section>
 
