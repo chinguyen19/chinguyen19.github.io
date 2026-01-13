@@ -43,7 +43,7 @@
         header p {
             margin-top: 0.5rem;
             color: var(--text-muted);
-        }
+        }   
 
         section {
             max-width: 1100px;
@@ -83,7 +83,31 @@
             color: var(--text-main);
             border-color: var(--accent-soft);
         }
+        
+        /* --- Top navigation buttons --- */
+        .top-nav {
+            display: flex;
+             justify-content: center;
+            gap: 2rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--border-soft);
+            background: var(--bg-main);
+        }
 
+        .top-nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .top-nav a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--accent-soft);
+        }
         /* ===== PROJECT CARDS ===== */
         .project {
             background: var(--bg-card);
@@ -196,7 +220,12 @@
     <p>Data Scientist · Data Analyst</p>
 </header>
 
-<section>
+<nav class="top-nav">
+    <a href="#Data-projects">Data Projects</a>
+    <a href="#dashboards">Dashboard Projects</a>
+</nav>     
+    
+<section id="Data-projects">
     <h2>Data Science & Analytics Projects</h2>
 
     <div class="filter-bar">
@@ -244,7 +273,7 @@ growth insights, faster reporting, and data-driven geographic expansion decision
     </div>
 </section>
 
-<section>
+<section id="dashboards">
     <h2>Dashboard Projects</h2>
 
     <div class="dashboard-grid">
@@ -294,6 +323,7 @@ financial models and provide actionable insights across services and regions</p>
 
 </body>
 </html>
+
 
 
 
