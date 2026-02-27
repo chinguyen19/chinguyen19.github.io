@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Wolt for Friends — Product Analytics Case Study | Chi Nguyen</title>
+    <style>
+        :root {
+            --bg-main: #0e0e0e;
+            --bg-card: #1a1a1a;
+            --bg-soft: #151515;
+            --text-main: #f2f2f2;
+            --text-muted: #b5b5b5;
+            --border-soft: #2a2a2a;
+            --accent-soft: #d1d1d1;
+            --wolt-blue: #009de0;
+            --wolt-blue-dim: rgba(0, 157, 224, 0.12);
+            --positive: #4ade80;
+            --positive-dim: rgba(74, 222, 128, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* NAV */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid var(--border-soft);
+            background: var(--bg-main);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .top-nav a:hover { color: var(--text-main); }
+
+        .nav-links { display: flex; gap: 2rem; }
+
+        /* HERO */
+        .hero {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--wolt-blue);
+            border: 1px solid var(--wolt-blue);
+            border-radius: 4px;
+            padding: 0.2rem 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin-bottom: 2rem;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1.2rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+
+        .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+        .meta-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+        .meta-value { font-size: 0.9rem; font-weight: 500; }
+
+        /* CONTENT */
+        .content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .section {
+            margin-bottom: 3.5rem;
+        }
+
+        .section h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--border-soft);
+            color: var(--text-main);
+        }
+
+        .section p {
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            font-size: 0.97rem;
+        }
+
+        /* HYPOTHESIS BLOCK */
+        .hypothesis {
+            background: var(--wolt-blue-dim);
+            border-left: 3px solid var(--wolt-blue);
+            border-radius: 0 8px 8px 0;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        /* MVP FEATURES */
+        .mvp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+
+        .mvp-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            border-radius: 10px;
+            padding: 1.2rem;
+        }
+
+        .mvp-icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .mvp-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .mvp-card p {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* METRICS TABLE */
+        .metrics-def {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .metrics-def th {
+            text-align: left;
+            padding: 0.6rem 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .metrics-def td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid var(--border-soft);
+            color: var(--text-muted);
+        }
+
+        .metrics-def td:first-child {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* KPI RESULTS CARDS */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .kpi-card {
+            background: var(--positive-dim);
+            border: 1px solid rgba(74, 222, 128, 0.25);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            text-align: center;
+        }
+
+        .kpi-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--positive);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .kpi-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* DASHBOARD MOCKUP */
+        .dashboard-mockup {
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .dashboard-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--wolt-blue);
+        }
+
+        .dashboard-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: var(--bg-soft);
+            border: 1px solid var(--border-soft);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+        }
+
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .stat-box {
+            background: var(--bg-soft);
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+        }
+
+        .stat-name {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-num {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .stat-delta {
+            font-size: 0.75rem;
+            color: #f87171;
+            margin-top: 0.2rem;
+        }
+
+        /* BAR CHART VISUAL */
+        .chart-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .mini-chart {
+            background: var(--bg-soft);
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .mini-chart-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .bar-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-end;
+            height: 80px;
+            justify-content: center;
+        }
+
+        .bar-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .bar {
+            width: 36px;
+            border-radius: 4px 4px 0 0;
+            transition: height 0.3s;
+        }
+
+        .bar-friend { background: var(--wolt-blue); }
+        .bar-nofriend { background: #3a3a3a; }
+
+        .bar-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .bar-val {
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        /* CAVEAT BOX */
+        .caveat {
+            background: rgba(251, 191, 36, 0.08);
+            border-left: 3px solid #fbbf24;
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .caveat strong { color: #fbbf24; }
+
+        /* GUARDRAILS */
+        .guardrail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin: 1rem 0;
+        }
+
+        .guardrail-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            font-size: 0.88rem;
+        }
+
+        .guardrail-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .guardrail-item p { margin: 0; color: var(--text-muted); font-size: 0.88rem; }
+        .guardrail-item strong { color: var(--text-main); }
+
+        /* CONCLUSION */
+        .conclusion-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 1.8rem;
+        }
+
+        .conclusion-box h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .conclusion-box p {
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            margin-bottom: 0.7rem;
+        }
+
+        .conclusion-box p:last-child { margin-bottom: 0; }
+
+        /* TOOLS ROW */
+        .tools-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tool-tag {
+            font-size: 0.78rem;
+            padding: 0.25rem 0.7rem;
+            background: var(--bg-soft);
+            border: 1px solid var(--border-soft);
+            border-radius: 20px;
+            color: var(--text-muted);
+        }
+
+        /* BACK BUTTON */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--text-main); }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-soft);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.7rem; }
+            .stat-row { grid-template-columns: repeat(2, 1fr); }
+            .chart-area { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <div class="nav-links">
+        <a href="index.html#Data-projects">Projects</a>
+        <a href="index.html#dashboards">Dashboards</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="tag">Product Analytics Case Study</div>
+    <h1>"Wolt for Friends"<br>Feature Impact Analysis</h1>
+    <p class="hero-sub">Evaluating whether social proof inside the app reduces friction and lifts key conversion and revenue KPIs — approached end-to-end as a product analyst: hypothesis definition, metric selection, SQL/Looker analysis, and pilot interpretation.</p>
+
+    <div class="meta-row">
+        <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Product Analyst (case study)</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Tools</span>
+            <span class="meta-value">SQL · Looker · KPI Design</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Pilot Duration</span>
+            <span class="meta-value">7 days · 11% traffic</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Context</span>
+            <span class="meta-value">Wolt PM Internship Application</span>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+
+    <!-- BACKGROUND -->
+    <div class="section">
+        <h2>Background & Motivation</h2>
+        <p>Inspired by Wolt's hackathon culture, I explored a product concept designed to leverage social proof to reduce decision friction at two critical drop-off points: basket creation and checkout conversion.</p>
+        <p>The feature — "Wolt for Friends" — is a fully opt-in social layer that surfaces what your contacts have recently ordered, reducing the cognitive load of choosing a restaurant or dish.</p>
+        <div class="hypothesis">
+            "Social proof inside the app reduces friction and lifts basket-to-order yield."
+        </div>
+    </div>
+
+    <!-- MVP -->
+    <div class="section">
+        <h2>Proposed MVP (Fully Opt-In)</h2>
+        <p>The MVP was scoped to three lightweight features requiring no changes to the core ordering flow:</p>
+        <div class="mvp-grid">
+            <div class="mvp-card">
+                <div class="mvp-icon">👥</div>
+                <h4>Friend Connection</h4>
+                <p>Add friends via phone contacts — opt-in only, no automatic syncing.</p>
+            </div>
+            <div class="mvp-card">
+                <div class="mvp-icon">📍</div>
+                <h4>"Friends Ordered Here" Badge</h4>
+                <p>Restaurant pages show a subtle badge when a friend has ordered there recently.</p>
+            </div>
+            <div class="mvp-card">
+                <div class="mvp-icon">⚡</div>
+                <h4>One-Tap Reorder</h4>
+                <p>Reorder from a friend's past order with a single tap — reduces menu decision fatigue.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- METRICS -->
+    <div class="section">
+        <h2>Key Metrics Defined</h2>
+        <p>Metrics were chosen to capture the full funnel from session entry to revenue generated, ensuring the feature's impact could be measured at each conversion step:</p>
+        <table class="metrics-def">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Definition</th>
+                    <th>Why it matters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basket Creation Rate</td>
+                    <td>% of sessions that create a basket</td>
+                    <td>Measures top-of-funnel intent — does the feature reduce browsing friction?</td>
+                </tr>
+                <tr>
+                    <td>Conversion Rate</td>
+                    <td>% of baskets that convert to paid checkout</td>
+                    <td>Measures bottom-of-funnel commitment — does social proof reduce abandonment?</td>
+                </tr>
+                <tr>
+                    <td>AOV (Avg. Order Value)</td>
+                    <td>Average spend per completed order</td>
+                    <td>Does seeing friend orders influence basket size upward?</td>
+                </tr>
+                <tr>
+                    <td>GMV per Session</td>
+                    <td>Total revenue divided by total sessions</td>
+                    <td>Composite efficiency metric — revenue impact per app open regardless of conversion path.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="section">
+        <h2>Looker Dashboard (Pilot Overview)</h2>
+        <p>A Looker dashboard was built to monitor all four KPIs in real time, segmented by Friend vs. No-Friend users, with week-over-week trending to surface baseline effects.</p>
+
+        <div class="dashboard-mockup">
+            <div class="dashboard-header">
+                <span class="dashboard-title">WOLT for Friends · Key Metrics</span>
+                <span class="dashboard-date">Dec 29, 2024 – Jan 4, 2025</span>
+            </div>
+            <div class="stat-row">
+                <div class="stat-box">
+                    <div class="stat-name">Basket Creation Rate (W-o-W)</div>
+                    <div class="stat-num">43.15%</div>
+                    <div class="stat-delta">↓ -0.4%</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-name">Conversion Rate (W-o-W)</div>
+                    <div class="stat-num">36.61%</div>
+                    <div class="stat-delta">↓ -1.1%</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-name">AOV (W-o-W)</div>
+                    <div class="stat-num">29.54€</div>
+                    <div class="stat-delta">↓ 0.0%</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-name">GMV per Session (W-o-W)</div>
+                    <div class="stat-num">11.06€</div>
+                    <div class="stat-delta">↓ -1.2%</div>
+                </div>
+            </div>
+
+            <div class="chart-area">
+                <div class="mini-chart">
+                    <div class="mini-chart-title">Share of traffic, baskets, orders — Friend vs No Friend</div>
+                    <div class="bar-group">
+                        <div class="bar-wrap">
+                            <span class="bar-val" style="color: var(--wolt-blue)">22.67%</span>
+                            <div class="bar bar-friend" style="height: 38px"></div>
+                            <span class="bar-label">Friend</span>
+                        </div>
+                        <div class="bar-wrap">
+                            <span class="bar-val">77.33%</span>
+                            <div class="bar bar-nofriend" style="height: 72px"></div>
+                            <span class="bar-label">No Friend</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mini-chart">
+                    <div class="mini-chart-title">AOV vs Conversion by Segment</div>
+                    <div class="bar-group">
+                        <div class="bar-wrap">
+                            <span class="bar-val" style="color: var(--wolt-blue)">43.48%</span>
+                            <div class="bar bar-friend" style="height: 70px"></div>
+                            <span class="bar-label">Friend Conv.</span>
+                        </div>
+                        <div class="bar-wrap">
+                            <span class="bar-val">29.46%</span>
+                            <div class="bar bar-nofriend" style="height: 48px"></div>
+                            <span class="bar-label">No Friend Conv.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="section">
+        <h2>Pilot Results (7 Days · 11% Traffic)</h2>
+        <p>Results are reported as Friend vs. No-Friend segment comparisons within the pilot window:</p>
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Basket Creation Rate</div>
+                <div class="kpi-value">+3.52pp</div>
+                <div class="kpi-desc">Friend vs. No-Friend</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Order Conversion</div>
+                <div class="kpi-value">+14.06pp</div>
+                <div class="kpi-desc">Friend vs. No-Friend</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Avg. Order Value</div>
+                <div class="kpi-value">+26%</div>
+                <div class="kpi-desc">€33 vs €26</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">GMV per Session</div>
+                <div class="kpi-value">+46.7%</div>
+                <div class="kpi-desc">Friend vs. No-Friend</div>
+            </div>
+        </div>
+
+        <div class="caveat">
+            <strong>Note on WoW totals:</strong> Week-over-week aggregate metrics dipped -0.4% to -1.2% during the pilot window. This reflects post-holiday baseline normalisation rather than feature-driven decline — the Friend vs. No-Friend segment comparison controls for this effect.
+        </div>
+    </div>
+
+    <!-- GUARDRAILS -->
+    <div class="section">
+        <h2>Guardrails Before Scaling</h2>
+        <p>Before recommending a broader rollout, the following constraints were defined to protect user trust and product quality:</p>
+        <div class="guardrail-list">
+            <div class="guardrail-item">
+                <span class="guardrail-icon">🎫</span>
+                <p><strong>Support ticket rate:</strong> Max 3 tickets per 1,000 orders — a threshold to catch unexpected friction or confusion introduced by the feature.</p>
+            </div>
+            <div class="guardrail-item">
+                <span class="guardrail-icon">🔒</span>
+                <p><strong>Privacy constraints:</strong> Only first name + initial and dish picture are surfaced — no order history, restaurant names, or spend data visible to friends.</p>
+            </div>
+            <div class="guardrail-item">
+                <span class="guardrail-icon">📋</span>
+                <p><strong>Feed cap:</strong> Friends feed limited to last 10 orders per user to prevent spam and keep the experience lightweight.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONCLUSION -->
+    <div class="section">
+        <h2>Conclusion & Recommendation</h2>
+        <div class="conclusion-box">
+            <h3>Pilot results support proceeding to a wider rollout</h3>
+            <p>The Friend segment showed meaningful lifts across all four success metrics, with the largest gains in order conversion (+14pp) and GMV/session (+46.7%). These are the two metrics most directly tied to Wolt's core business health.</p>
+            <p>The WoW aggregate dip is attributable to the post-holiday baseline shift and does not represent a negative signal from the feature itself — the controlled segment comparison cleanly isolates feature impact from external trends.</p>
+            <p>Recommended next steps: expand traffic allocation to 30–50%, monitor guardrail metrics closely for the first 2 weeks, and conduct a qualitative survey with Friend-segment users to understand which of the three MVP features (badge, reorder, connection) drives the most engagement.</p>
+            <div class="tools-row">
+                <span class="tool-tag">SQL</span>
+                <span class="tool-tag">Looker</span>
+                <span class="tool-tag">KPI Design</span>
+                <span class="tool-tag">A/B Analysis</span>
+                <span class="tool-tag">Funnel Analytics</span>
+                <span class="tool-tag">Product Thinking</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Chi Nguyen · <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Back to Portfolio</a>
+</footer>
+
+</body>
+</html>
