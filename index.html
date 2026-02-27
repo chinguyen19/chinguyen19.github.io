@@ -108,6 +108,7 @@
             color: var(--text-main);
             border-bottom-color: var(--accent-soft);
         }
+
         /* ===== PROJECT CARDS ===== */
         .project {
             background: var(--bg-card);
@@ -142,6 +143,84 @@
             font-style: italic;
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        /* ===== FEATURED CARD (Product Analytics) ===== */
+        .project-featured {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #009de040;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-featured::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #009de0, transparent);
+        }
+
+        .project-featured h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .project-featured p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .project-featured .tag-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 0.8rem 0;
+        }
+
+        .project-featured .pill {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            background: rgba(0, 157, 224, 0.1);
+            border: 1px solid rgba(0, 157, 224, 0.25);
+            color: #009de0;
+        }
+
+        .project-featured a {
+            color: var(--accent-soft);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .project-featured a:hover { text-decoration: underline; }
+
+        .kpi-preview {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .kpi-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .kpi-mini-val {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #4ade80;
+        }
+
+        .kpi-mini-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
         }
 
         /* ===== DASHBOARD GRID ===== */
@@ -197,7 +276,7 @@
 
     <script>
         function filterProjects(category) {
-            const projects = document.querySelectorAll(".project");
+            const projects = document.querySelectorAll(".project, .project-featured");
             const buttons = document.querySelectorAll(".filter-btn");
 
             buttons.forEach(btn => btn.classList.remove("active"));
@@ -232,6 +311,39 @@
         <button id="all" class="filter-btn active" onclick="filterProjects('all')">All</button>
         <button id="business" class="filter-btn" onclick="filterProjects('business')">Business</button>
         <button id="healthcare" class="filter-btn" onclick="filterProjects('healthcare')">Healthcare</button>
+        <button id="product" class="filter-btn" onclick="filterProjects('product')">Product Analytics</button>
+    </div>
+
+    <!-- PRODUCT ANALYTICS FEATURED CARD -->
+    <div class="project-featured" data-category="product">
+        <h3>"Wolt for Friends" — Product Feature Impact Analysis</h3>
+        <div class="tag-row">
+            <span class="pill">SQL</span>
+            <span class="pill">Looker</span>
+            <span class="pill">KPI Design</span>
+            <span class="pill">A/B Analysis</span>
+            <span class="pill">Product Thinking</span>
+        </div>
+        <p>Explored whether social proof inside the app reduces friction and lifts basket-to-order yield. Approached end-to-end as a product analyst: defined the hypothesis, selected success metrics, built a Looker dashboard, ran a 7-day pilot on 11% of traffic, and interpreted results with guardrails before recommending scale.</p>
+        <div class="kpi-preview">
+            <div class="kpi-mini">
+                <span class="kpi-mini-val">+14.06pp</span>
+                <span class="kpi-mini-label">Order Conversion</span>
+            </div>
+            <div class="kpi-mini">
+                <span class="kpi-mini-val">+26%</span>
+                <span class="kpi-mini-label">AOV</span>
+            </div>
+            <div class="kpi-mini">
+                <span class="kpi-mini-val">+46.7%</span>
+                <span class="kpi-mini-label">GMV / Session</span>
+            </div>
+            <div class="kpi-mini">
+                <span class="kpi-mini-val">+3.52pp</span>
+                <span class="kpi-mini-label">Basket Creation Rate</span>
+            </div>
+        </div>
+        <a href="wolt-case-study.html">View full case study →</a>
     </div>
 
     <div class="project" data-category="business">
@@ -240,17 +352,15 @@
         <a href="https://github.com/chinguyen19/Optimal-Stock-Level-Analysis" target="_blank">View on GitHub</a>
     </div>
 
-        <div class="project" data-category="business">
+    <div class="project" data-category="business">
         <h3>Digital Marketing Strategy Optimization | SQL, Python, Excel </h3>
-        <p>Analyzed multi-source e-commerce data using SQL and Python to diagnose revenue decline, uncovering
-mobile and weekend conversion gaps and recommending strategies expected to lift weekend revenue by 22%.</p>
+        <p>Analyzed multi-source e-commerce data using SQL and Python to diagnose revenue decline, uncovering mobile and weekend conversion gaps and recommending strategies expected to lift weekend revenue by 22%.</p>
         <a href="https://github.com/chinguyen19/Digital-Marketing-Strategy-Optimization" target="_blank">View on GitHub</a>
     </div>
     
-        <div class="project" data-category="business">
+    <div class="project" data-category="business">
         <h3>Executive Sales Analytic Summary – Tech LTD. (2021-2024) | Excel, Tableau </h3>
-        <p>Designed an executive Tableau dashboard consolidating 10,000+ sales records, enabling 36% YoY sales
-growth insights, faster reporting, and data-driven geographic expansion decisions.</p>
+        <p>Designed an executive Tableau dashboard consolidating 10,000+ sales records, enabling 36% YoY sales growth insights, faster reporting, and data-driven geographic expansion decisions.</p>
         <a href="https://github.com/chinguyen19/Executive-Sales-Analytic-Summary" target="_blank">View on GitHub</a>
     </div>
     
@@ -261,7 +371,7 @@ growth insights, faster reporting, and data-driven geographic expansion decision
     </div>
 
     <div class="project" data-category="healthcare">
-        <h3>Machine Learning for Alzheimer’s Drug Discovery</h3>
+        <h3>Machine Learning for Alzheimer's Drug Discovery</h3>
         <p>Prediction of acetylcholinesterase inhibitors using bioactivity data to accelerate early-stage drug discovery.</p>
         <a href="https://github.com/chinguyen19/Data-Science-Bioinformatics-projects/tree/4ee1328112760d010b72d1c7d50236ad431b5a2e/Computational_drug_dicovery" target="_blank">View on GitHub</a>
     </div>
@@ -273,12 +383,13 @@ growth insights, faster reporting, and data-driven geographic expansion decision
     </div>
 </section>
 
+<!-- PRODUCT ANALYTICS SECTION anchor -->
+<div id="product-analytics"></div>
+
 <section id="dashboards">
     <h2>Dashboard Projects</h2>
 
     <div class="dashboard-grid">
-
-                <!-- Reserved space -->
         <div class="dashboard-card">
             <h3>Executive Sales Analytics Dashboard (Tableau)</h3>
             <p class="status">Summarize key business metrics for executive stakeholders: sales, profit, orders, customers</p>
@@ -287,10 +398,8 @@ growth insights, faster reporting, and data-driven geographic expansion decision
 
         <div class="dashboard-card">
             <h3>Financial Analysis Dashboard (Excel)</h3>
-            <p class="status">A centralized financial performance dashboard (EXCEL) to consolidate country-level
-financial models and provide actionable insights across services and regions</p>
+            <p class="status">A centralized financial performance dashboard (EXCEL) to consolidate country-level financial models and provide actionable insights across services and regions</p>
             <img src="https://github.com/chinguyen19/Finance-Analysis-Project/blob/3be4caaa18407d45c2cf64da3df594dbb545c245/overview.png?raw=true" />
-           
         </div>        
 
         <div class="dashboard-card">
@@ -324,6 +433,7 @@ financial models and provide actionable insights across services and regions</p>
 
 </body>
 </html>
+
 
 
 
